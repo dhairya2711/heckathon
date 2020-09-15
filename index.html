@@ -1,0 +1,160 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        video{
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <video id="me"></video>
+    <video id="video2"></video>
+    
+    <script src="http://cdn.agora.io/sdk/web/AgoraRTCSDK-2.4-latest.js"></script>
+    <script>
+        var myVideo = document.getElementById("video1");
+        var otherVideo = document.getElementById("video2");
+
+        function error(err){
+            console.log("Error: ", err);
+        }
+
+        function addVideoStream(){
+            let streamDiv = document.createElement("div");
+            otherVideo.appendChild(streamDiv);
+        }
+        
+
+        C1 = AgoraRTC.createClient({
+            mode: 'live', 
+            codec: 'h264',
+        });
+        C1.init("06382a83005a406594e30d2fc2b2fcb9", ()=>{console.log("Client 1 is connected")});
+        C1.join(null, "1234", null, (uid)=>{
+            console.log("C1 has been joined channel 1234");
+            let localStream = AgoraRTC.createStream({
+                streamID: uid, 
+                audio: false, 
+                video: true, 
+                screen: false
+            });
+            localStream.init(function(){
+                localStream.play("me");
+                C1.publish(localStream,error);
+                C1.on("stream-added", function(evt){
+                    C1.subscribe(evt.stream, error);
+                });
+                C1.on("stream-subscribed", function(evt){
+                    let stream = evt.stream;
+                    addVideoStream();
+                });
+            });
+        }, error);
+
+
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Video Call Demo</h1>
+    <h4>Me: </h4>
+    <div id=me></div>
+
+    <h4>Other: </h4>
+    <div id=remote-container></div>
+    
+    <h4>Canvas</h4>
+    <div id="canvas-container"></div>
+
+    <script src="http://cdn.agora.io/sdk/web/AgoraRTCSDK-2.4-latest.js"></script>
+    <script type="text/javascript">
+        function handleFail(err){
+            console.log("Error: ",err);
+        } 
+        
+        let remoteContainer = document.getElementById("remote-container");
+        let canvasContainer = document.getElementById("canvas-container");
+        function addVideoStream(streamId){
+            let streamDiv = document.createElement("div");
+            streamDiv.id = streamId;
+            streamDiv.style.transform = "rotateY(180deg)";
+            remoteContainer.appendChild(streamDiv);
+        }
+        function removeVideoStream(evt){
+            let stream = evt.stream;
+            stream.stop();
+            let remDiv = document.getElementById(stream.getId());
+            remDiv.parentNode.removeChild(remDiv);
+            console.log("Remove Stream in removerd "+stream.getId());
+        }
+        function addCanvas(streamId){
+            let video = document.getElementById(`video${streamId}`);
+            let canvas = document.createElement("canvas");
+            canvasContainer.appendChild(canvas);
+            let ctx = canvas.getContext('2d');
+
+            video.addEventListener("loadedmetadata", function(){
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+            });
+
+            video.addEventListener('play', function(){
+                var $this = this;
+                (function loop(){
+                    if(!$this.paused && !$this.ended){
+                        if($this.width !== canvas.width){
+                            canvas.width = video.videoWidth;
+                            canvas.height = video.videoHeight;
+                        }
+                        ctx.drawImage($this, 0, 0);
+                        setTimeout(loop, 1000/30);
+                    }
+                })();
+            }, 0);
+        }
+
+        let client = AgoraRTC.createClient({
+            mode: "live",
+            codec: 'h264',
+        });
+        client.init("06382a83005a406594e30d2fc2b2fcb9", ()=>{console.log("Client 1 is connected")});
+        client.join(null, "1234", null, (uid)=>{
+            let localStream = AgoraRTC.createStream({
+                streamID: uid, 
+                audio: false, 
+                video: true, 
+                screen: false
+            });
+
+            localStream.init(function(){
+                localStream.play("me");
+                client.publish(localStream, handleFail);
+                client.on("stream-added", function(evt){
+                    client.subscribe(evt.stream, handleFail);
+                });
+                client.on("stream-subscribed", function(evt){
+                    let stream = evt.stream;
+                    addVideoStream(stream.getId());
+                    stream.play(stream.getId());
+                    addCanvas(stream.getId());
+                });
+                client.on("stream-removed", removeVideoStream);
+            }, handleFail);
+        }, handleFail);
+    </script>
+</body>
+</html>
