@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Emergency</title>
+    <style type="text/css">
+    #popup-main{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 1001;
+      display: inline-block;
+      transform: translateY(-100%);
+      animation-name: emergency;
+      animation-duration: 0.01s;
+      animation-timing-function: linear;
+      animation-direction:alternate; 
+      animation-delay: 2s;
+      animation-fill-mode: forwards;
+    }
+    #popup{
+      height: auto;
+      width: auto;
+      border: 2px solid black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 1px 1px 10px black;
+      text-align: center;
+    }
+    #emergency{
+      background-color: #ed1b2e;
+      color: white;
+    }
+    @keyframes emergency{
+    0%{ 
+      transform: translateY(-100%);
+    }
+    100%{ 
+      transform: translateY(-2%); 
+    } 
+}
+    
+    </style>
+  </head>
+  <body>
+    <div class="text-center" id="popup-main">
+      <div class="" id="popup">
+          <div class="form-group">
+            <div class="" id="emergency">
+              <p class="text-right"><a href="tvm.html" class="mr-1 pt-2"><i class="fa fa-close" style="color: white;background-color: transparent;font-size: 30px;"></i></a></p>
+
+              <p class="h5 text-center pb-5" style="padding-left: -10px;">
+                <i class="fa fa-ambulance" style=""></i>&nbsp&nbsp
+                Emergency &nbsp
+                <i class="fa fa-ambulance" style="transform: rotateY(180deg);"></i></p>
+              
+            </div>
+            <form action="" method="POST" class="text-center">
+              <div class="container text-center">
+                <div class="row text-center">
+                  <br>
+                  <div class="col text-center ml-2 mr-2"><br>
+                    <label for="Speciality" class="h6 text-center mb-3 pl-5 pr-5">What happened??</label><br>
+                    <select class="form-control text-center" required="required" style="width: 100%;">
+                      <option><h6>Choose your incident</h6></option>
+                      <option>Accident</option>
+                      <option>Skin Burns</option>
+                      <option>Heart Attack</option>
+                      <option>Pregnancy</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row text-center">
+                  <div class="col text-center ml-2 mr-2"><br>
+                    <label for="Speciality" class="h6 text-center mb-3 pl-5 pr-5">Additional Details</label><br>
+                    <textarea class="form-control" name="workaddress" placeholder="Additional details like address" rows="3"></textarea>
+                  </div> 
+                </div>
+                  <div class="row text-center ml-2 mr-2">
+                    <div class="col text-center"><br>
+                       <button class="text-center rounded" style="height: 40px;width: 100px;color: white;border: 2px solid black;background-color: #ed1b2e">Submit</button><br><br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

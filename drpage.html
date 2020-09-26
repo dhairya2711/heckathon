@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, Doc!!</title>
+    <style type="text/css">
+      .container{
+        margin: 150px;
+        width: 70%;
+        background: white;
+        border: 2px solid black;
+        overflow: hidden;
+        }
+      #photu{
+        height: 150px;
+        width: 150px;
+        border: 3px solid;
+        border-radius: 100%;
+        margin: auto;
+      }
+      @media screen and (max-width: 750px){
+        .container{
+          width: 90%;
+          margin: 0px;
+          text-align: center; 
+        }
+      }
+    </style>
+  </head>
+  <body class="" style="background-color: rgba(128,128,128,0.5);">
+    <center>
+      <form method="POST" action="#">
+        <div class="container">
+          <div class="form-group">
+            <div class="row">
+              <div class="col" style="background-color: #ed1b2e">
+                <br>
+                <p class="h1 text-center" style="color: white">
+                  Hello, Doctor!! <i class="fa fa-plus-square"></i>
+                </p>
+                <br>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col text-center" >
+                <p class="h2 text-center" style="color: black">Registration Form</p>
+              </div>
+            </div><br><hr><br>
+            <div class="row">
+              <div class="col text-center">
+                <div class=" col text-center" id="photu">
+                  <i class="fa fa-user" style="font-size: 100px; padding-top: 20px;padding-left: 10px;"></i>
+                  <i class="fa fa-plus" style="font-size: 25px;"></i>
+                </div> <br>
+                <input type="file" name="p" accept=".jpg,.png" multiple="multiple" class="text-center" style="font-size: 13px;padding-left: 0px;">
+              </div>
+            </div>
+            <br><hr>
+            <div class="row">
+              <div class="col-lg-6">
+                <label for="FName" class="h4 text-center">First Name</label><br><br>
+                <input type="text" class="form-control" placeholder="First Name" name="fname" required="required"><br><br>
+              </div>
+              <div class="col-lg-6">
+                <label for="LName" class="h4 text-center">Last Name</label><br><br>
+                <input type="text" class="form-control" placeholder="Last Name" name="lname" required="required"><br><br>
+              </div>
+            </div>
+          </div>
+             <div class="row">
+              <div class="col-lg-6">
+                <label for="Number" class="h4 text-center">Contact No.</label><br><br>
+                <input type="text" class="form-control" placeholder="Mobile No." name="number" required="required"><br><br>
+              </div>
+              <div class="col-lg-6">
+                <label for="email" class="h4 text-center">Email</label><br><br>
+                <input type="text" class="form-control" placeholder="Mail Id" name="email" required="required"><br><br>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-lg-6">
+                <label for="gyear" class="h4 text-center">Graduation year</label><br><br>
+                <input type="text" class="form-control " placeholder="Graduation Year" name="gyear" required="required"><br><br>
+              </div>
+              <div class="col-lg-6">
+                <label for="rno" class="h4 text-center">Registration Number</label><br><br>
+                <input type="text" class="form-control " placeholder="Register Id" name="rno" required="required"><br><br>
+              </div>
+            </div> 
+           
+             <div class="row">
+                <div class="col-lg">
+                <label for="Work Address" class="h4 text-center">Will you provide free service during emergency??</label><br><br>
+                <div class="row">
+                  <div class="col-6 text-right pr-4">
+                    <input type="radio" name="emergency" checked="checked"> <span class="h5 text-center">Yes</span>
+                  </div>
+                  <div class="col-6 text-left pr-4">
+                    <input type="radio" name="emergency"><span class="h5 text-center"> No</span>  <br><br><br>
+                  </div>
+                
+                </div>
+                
+              </div>
+            </div> 
+            <div class="row">
+              
+              <div class="col-lg-6 text-center">
+                <label for="Speciality" class="h4 text-center">Your Speciality</label><br><br>
+                <select class="form-control">
+                  <option>Choose your speciality</option>
+                  <option>Orhtopaedic</option>
+                  <option>Pediatrician</option>
+                  <option>Gynaecologist</option>
+                  <option>Physician</option>
+                  <option>Psychologist</option>
+                  <option>Neurologist</option>
+                  <option>MBBS</option>
+                  <option>MD</option>
+                  <option>Dermatologist</option>
+                  <option>Homeopathic</option>
+                  <option>Psychiatrist</option>
+                  <option>Master Of Surgeons</option>
+                  <option>Otorhinolaryngology</option>
+                  <option>Cardiologist</option>
+               </select><br><br>
+              </div>
+              <div class="col-lg-6 text-center">
+                <label for="cfee" class="h4 text-center">Consultancy charge</label><br><br>
+                <input type="number" class="form-control" placeholder="Enter your consultancy fees" name="cfee" required="required" validate="value<500"><br><br>
+              </div>
+            </div>  
+             <div class="row text-center">
+              <div class="col-lg text-center">
+                <label for="Work Address" class="h4 text-center">Work Place</label>
+                <textarea class="form-control" name="workaddress" placeholder="Address of your Workplace" rows="3"></textarea><br><br>
+              </div>
+            </div> 
+            <div class="row text-center">
+              <div class="col-lg text-center">
+                <button class="text-center rounded" style="height: 40px;width: 100px;color: white;border: 2px solid black;background-color: #ed1b2e"><a href ="after click login page.html">Submit</a></button><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+  </center>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
